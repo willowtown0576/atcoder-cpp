@@ -136,7 +136,9 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 
 // ---- macros ----
 #define rep(i, x, limit) for (ll i = (ll)(x); i < (ll)(limit); i++)
+#define rrep(i, x, limit) for (ll i = (ll)(limit) - 1; i >= (ll)(x); i--)
 #define REP(i, x, limit) for (ll i = (ll)(x); i <= (ll)(limit); i++)
+#define RREP(i, x, limit) for (ll i = (ll)(limit); i >= (ll)(x); i--)
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define el '\n'
