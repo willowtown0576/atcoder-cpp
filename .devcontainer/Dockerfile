@@ -123,6 +123,10 @@ using ll = long long;
 using ull = unsigned long long;
 using i128 = __int128_t;
 using u128 = __uint128_t;
+using vi = vector<int>;
+using vll = vector<long long>;
+using vc = vector<char>;
+using vs = vector<string>;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
 
@@ -145,10 +149,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
