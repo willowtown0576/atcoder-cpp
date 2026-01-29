@@ -1,5 +1,6 @@
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <vector>
 
 using namespace std;
 using namespace atcoder;
@@ -40,10 +41,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +82,39 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int n;
+  cin >> n;
+
+  vector<vector<int>> grid(1502, vector<int>(1502, 0));
+  rep(i, 0, n) {
+    int x, y;
+    cin >> x >> y;
+
+    grid[x][y]++;
+  }
+
+  vector<vector<int>> acc(1502, vector<int>(1502, 0));
+
+  // 横方向に累積和を取る
+  REP(i, 1, 1500) {
+    REP(j, 1, 1500) { acc[i][j] = acc[i][j - 1] + grid[i][j]; }
+  }
+
+  // 縦方向に累積和を取る
+  REP(j, 1, 1500) {
+    REP(i, 1, 1500) { acc[i][j] = acc[i - 1][j] + acc[i][j]; }
+  }
+
+  // 答え
+  int q;
+  cin >> q;
+
+  rep(i, 0, q) {
+    int a, b, c, d;
+    cin >> a >> b >> c >> d;
+
+    cout << acc[c][d] + acc[a - 1][b - 1] - acc[c][b - 1] - acc[a - 1][d] << el;
+  }
 }
 
 // ---- main ----

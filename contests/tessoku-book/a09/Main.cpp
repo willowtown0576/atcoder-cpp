@@ -1,5 +1,6 @@
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <vector>
 
 using namespace std;
 using namespace atcoder;
@@ -40,10 +41,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +82,42 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int h, w, n;
+  cin >> h >> w >> n;
+
+  vector<vector<ll>> kingdom(h + 2, vector<ll>(w + 2, 0));
+
+  rep(i, 0, n) {
+    int a, b, c, d;
+    cin >> a >> b >> c >> d;
+    kingdom[a][b]++;
+    kingdom[c + 1][b]--;
+    kingdom[a][d + 1]--;
+    kingdom[c + 1][d + 1]++;
+  }
+
+  vector<vector<ll>> ans(h + 2, vector<ll>(w + 2, 0));
+
+  // 横方向に累積和を取る
+  REP(i, 1, h) {
+    REP(j, 1, w) { ans[i][j] = ans[i][j - 1] + kingdom[i][j]; }
+  }
+
+  // 縦方向に累積和を取る
+  REP(j, 1, w) {
+    REP(i, 1, h) { ans[i][j] = ans[i - 1][j] + ans[i][j]; }
+  }
+
+  // 答え
+  REP(i, 1, h) {
+    REP(j, 1, w) {
+      cout << ans[i][j];
+      if (j != w) {
+        cout << " ";
+      }
+    }
+    cout << el;
+  }
 }
 
 // ---- main ----
