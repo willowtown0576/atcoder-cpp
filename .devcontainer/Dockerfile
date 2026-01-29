@@ -55,13 +55,13 @@ export PS1="\[\e[32m\]\u@\h\[\e[0m\]:\[\e[34m\]\w\[\e[0m\] \$ "
 EOF
 
 # ============================================================
-# --- C++23を安定させる：g++-13 ---
+# --- C++23設定：g++-13 ---
 # ============================================================
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test \
     && apt-get update && apt-get install -y g++-13 gcc-13 \
     && rm -rf /var/lib/apt/lists/*
 
-# g++/gcc のデフォルトを 13 に
+# g++/gccのデフォルトを13に
 RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 130 \
     && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 130
 
@@ -181,6 +181,8 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
   }
   cout << el;
 }
+
+// ---- snippets paste zone ----
 
 // ---- solve ----
 static void solve() {
