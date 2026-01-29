@@ -2,17 +2,17 @@
 
 このリポジトリは、AtCoder用C++競技プログラミング環境です。
 
-・開発環境は Dev Container（Docker）上で完結
-・Dockerfile に必要ツールをすべて含める
-・ユーザはroot
-・`acc new`直後に、問題ディレクトリでそのまま make が使える
+- 開発環境は Dev Container（Docker）上で完結
+- Dockerfile に必要ツールをすべて含める
+- ユーザはroot
+- `acc new`直後に、問題ディレクトリでそのまま make が使える
 
 ---
 
 ## 前提条件（ホストOS側）
 
-・Docker Desktop
-・VSCode/Zed（Dev Container対応エディタ）
+- Docker Desktop
+- VSCode/Zed（Dev Container対応エディタ）
 
 ---
 
@@ -26,10 +26,10 @@
 make login
 ```
 
-`aclogin`が実行されるので、案内に従って
-ブラウザでAtCoderにログイン → Cookieコピー → ターミナルへ貼り付け を行う。
+`aclogin`が実行されるので、案内に従ってブラウザでAtCoderにログイン → Cookieコピー → ターミナルへ貼り付け を行う。
 
-※ acc login は現在うまく動かないため使用しない。
+> [!NOTE]
+> acc login は現在うまく動かないため使用しない。
 
 ---
 
@@ -65,33 +65,32 @@ make test
 
 6. 提出
 
-※現状はリアルタイムコンテスト時以外は使用不可
-
 ```bash
 make submit
 ```
+
+> [!NOTE]
+> 現状はリアルタイムコンテスト時以外は使用不可
 
 ---
 
 ## よく使うコマンド
 
-make build : コンパイル
-make test : サンプルテスト実行（oj）
-make submit : 提出（acc）
-make clean : 実行ファイル削除
+- make build : コンパイル
+- make test : サンプルテスト実行（oj）
+- make submit : 提出（acc）
+- make clean : 実行ファイル削除
 
 ---
 
 ## ルートディレクトリから特定問題を操作したい場合
 
-make build-in DIR=contests/abc350/a
-make test-in DIR=contests/abc350/a
-make submit-in DIR=contests/abc350/a
+- make build-in DIR=contests/abc350/a
+- make test-in DIR=contests/abc350/a
+- make submit-in DIR=contests/abc350/a
 
 ---
 
 ## メモ
 
-・acc new で生成される各問題ディレクトリには、
-テンプレの cmd により /workspace/Makefile への symlink（Makefile）が自動作成される。
-そのため、問題ディレクトリでそのまま make が使える。
+- `acc new`で生成される各問題ディレクトリには、/workspace/Makefileへのsymlink（Makefile）が自動作成される。そのため、問題ディレクトリでそのまま`make`が使える。
