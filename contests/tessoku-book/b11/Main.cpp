@@ -1,5 +1,7 @@
+#include <algorithm>
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <vector>
 
 using namespace std;
 using namespace atcoder;
@@ -18,6 +20,7 @@ using ll = long long;
 using ull = unsigned long long;
 using i128 = __int128_t;
 using u128 = __uint128_t;
+using vll = vector<ll>;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
 
@@ -40,10 +43,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +84,21 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int n;
+  cin >> n;
+  vll a = read_vec<ll>(n);
+  sort(all(a));
+
+  int q;
+  cin >> q;
+
+  rep(i, 0, q) {
+    ll x;
+    cin >> x;
+
+    int ans = lower_bound(all(a), x) - a.begin();
+    cout << ans << el;
+  }
 }
 
 // ---- main ----
