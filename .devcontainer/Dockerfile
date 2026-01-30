@@ -124,8 +124,13 @@ using ull = unsigned long long;
 using i128 = __int128_t;
 using u128 = __uint128_t;
 using vi = vector<int>;
-using vll = vector<long long>;
+using vvi = vector<vi>;
+using vll = vector<ll>;
+using vvll = vector<vll>;
+using vb = vector<bool>;
+using vvb = vector<vb>;
 using vc = vector<char>;
+using vvc = vector<vc>;
 using vs = vector<string>;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
@@ -143,6 +148,14 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #define rall(x) (x).rbegin(), (x).rend()
 #define el '\n'
 
+// ---- direction ----
+enum Dir4 { DOWN, RIGHT, UP, LEFT, DIR4_CNT };
+enum Dir8 { D, DR, R, UR, U, UL, L, DL, DIR8_CNT };
+const int dx4[4] = { 1, 0, -1, 0 };
+const int dy4[4] = { 0, 1, 0, -1 };
+const int dx8[8] = { 1, 1, 0, -1, -1, -1, 0, 1 };
+const int dy8[8] = { 0, 1, 1, 1, 0, -1, -1, -1 };
+
 // ---- debug ----
 #ifdef LOCAL
 #define debug(x) cerr << #x << " = " << (x) << el
@@ -151,10 +164,13 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes() { cout << "Yes\n"; }
-inline void No() { cout << "No\n"; }
-inline void YES() { cout << "YES\n"; }
-inline void NO() { cout << "NO\n"; }
+inline void Yes() { cout << "Yes" << el; }
+inline void No() { cout << "No" << el; }
+inline void YES() { cout << "YES" << el; }
+inline void NO() { cout << "NO" << el; }
+inline void print_double(double x, int n = 10) {
+    cout << fixed << setprecision(n) << x << el;
+}
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -189,6 +205,8 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 }
 
 // ---- snippets paste zone ----
+
+// ---- problem functions ----
 
 // ---- solve ----
 static void solve() {
