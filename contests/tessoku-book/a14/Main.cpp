@@ -1,5 +1,7 @@
+#include <algorithm>
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <vector>
 
 using namespace std;
 using namespace atcoder;
@@ -18,6 +20,7 @@ using ll = long long;
 using ull = unsigned long long;
 using i128 = __int128_t;
 using u128 = __uint128_t;
+using vll = vector<ll>;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
 
@@ -40,10 +43,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +84,46 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int n, k;
+  cin >> n >> k;
+
+  vll a = read_vec<ll>(n);
+  vll b = read_vec<ll>(n);
+  vll c = read_vec<ll>(n);
+  vll d = read_vec<ll>(n);
+
+  // 箱A, 箱Bからそれぞれ一枚選んだときの合計値のパターンを管理する配列P
+  vll p(n * n, 0);
+  int index1 = 0;
+  rep(i, 0, n) {
+    rep(j, 0, n) {
+      p[index1] = a[i] + b[j];
+      index1++;
+    }
+  }
+
+  // 箱C, 箱Dからそれぞれ一枚選んだときの合計値のパターンを管理する配列Q
+  vll q(n * n, 0);
+  int index2 = 0;
+  rep(i, 0, n) {
+    rep(j, 0, n) {
+      q[index2] = c[i] + d[j];
+      index2++;
+    }
+  }
+
+  // 配列Qをソート
+  sort(all(q));
+
+  // 二分探索で、k-p[i]がqに存在するかどうかを探索する
+  rep(i, 0, p.size()) {
+    ll target = k - p[i];
+    if (binary_search(all(q), target)) {
+      Yes();
+      return;
+    }
+  }
+  No();
 }
 
 // ---- main ----
