@@ -1,5 +1,6 @@
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <vector>
 
 using namespace std;
 using namespace atcoder;
@@ -18,6 +19,7 @@ using ll = long long;
 using ull = unsigned long long;
 using i128 = __int128_t;
 using u128 = __uint128_t;
+using vll = vector<ll>;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
 
@@ -40,10 +42,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +83,29 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int n, k;
+  cin >> n >> k;
+  vll a = read_vec<ll>(n);
+
+  // 累積和を取る
+  vll acc(n + 1, 0);
+  rep(i, 0, n) { acc[i + 1] = acc[i] + a[i]; }
+
+  ll ans = 0;
+  int r = 0;
+
+  // 累積和に対して尺取法
+  rep(l, 0, n + 1) {
+    if (r < l) {
+      r = l;
+    }
+
+    while (r + 1 < n + 1 && acc[r + 1] - acc[l] <= k) {
+      r++;
+    }
+    ans += (r - l);
+  }
+  cout << ans << el;
 }
 
 // ---- main ----

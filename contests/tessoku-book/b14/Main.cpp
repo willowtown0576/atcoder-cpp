@@ -1,5 +1,7 @@
+#include <algorithm>
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <vector>
 
 using namespace std;
 using namespace atcoder;
@@ -18,6 +20,7 @@ using ll = long long;
 using ull = unsigned long long;
 using i128 = __int128_t;
 using u128 = __uint128_t;
+using vll = vector<ll>;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
 
@@ -40,10 +43,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +84,54 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int n, k;
+  cin >> n >> k;
+
+  vll a = read_vec<ll>(n);
+  int mid = n / 2;
+
+  // 配列aを前半、後半の二つに分けて、それぞれのカードの合計値のパターンを全列挙する
+
+  // 前半
+  vll p((1 << mid), 0);
+  int index1 = 0;
+  rep(bit, 0, (1 << mid)) {
+    ll sum = 0;
+    rep(i, 0, mid) {
+      if (bit & (1 << i)) {
+        sum += a[i];
+      }
+    }
+    p[index1] = sum;
+    index1++;
+  }
+
+  // 後半
+  vll q((1 << (n - mid)), 0);
+  int index2 = 0;
+  rep(bit, 0, (1 << (n - mid))) {
+    ll sum = 0;
+    rep(i, mid, n) {
+      if (bit & (1 << (i - mid))) {
+        sum += a[i];
+      }
+    }
+    q[index2] = sum;
+    index2++;
+  }
+
+  // 後半用配列Qをソート（二分探索のため）
+  sort(all(q));
+
+  // k - p[i]がqに存在するかをチェックする。
+  rep(i, 0, (1 << mid)) {
+    ll target = k - p[i];
+    if (binary_search(all(q), target)) {
+      Yes();
+      return;
+    }
+  }
+  No();
 }
 
 // ---- main ----
