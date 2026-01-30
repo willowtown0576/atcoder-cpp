@@ -123,6 +123,10 @@ using ll = long long;
 using ull = unsigned long long;
 using i128 = __int128_t;
 using u128 = __uint128_t;
+using vi = vector<int>;
+using vll = vector<long long>;
+using vc = vector<char>;
+using vs = vector<string>;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
 
@@ -132,7 +136,9 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 
 // ---- macros ----
 #define rep(i, x, limit) for (ll i = (ll)(x); i < (ll)(limit); i++)
+#define rrep(i, x, limit) for (ll i = (ll)(limit) - 1; i >= (ll)(x); i--)
 #define REP(i, x, limit) for (ll i = (ll)(x); i <= (ll)(limit); i++)
+#define RREP(i, x, limit) for (ll i = (ll)(limit); i >= (ll)(x); i--)
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define el '\n'
@@ -145,10 +151,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
