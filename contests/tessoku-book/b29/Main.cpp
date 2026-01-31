@@ -24,6 +24,7 @@ using pll = pair<ll, ll>;
 // ---- constants ----
 constexpr int INF = numeric_limits<int>::max() / 4;
 constexpr ll LINF = numeric_limits<ll>::max() / 4;
+constexpr int MOD = 1000000007;
 
 // ---- macros ----
 #define rep(i, x, limit) for (ll i = (ll)(x); i < (ll)(limit); i++)
@@ -40,10 +41,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +82,20 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  ll a, b;
+  cin >> a >> b;
+
+  // 繰り返し二乗法
+  ll p = a, ans = 1;
+  for (int i = 0; i < 60; i++) {
+    ll wari = (1LL << i);
+    if ((b / wari) % 2 == 1) {
+      ans = (ans * p) % MOD;
+    }
+    p = (p * p) % MOD;
+  }
+
+  cout << ans << el;
 }
 
 // ---- main ----

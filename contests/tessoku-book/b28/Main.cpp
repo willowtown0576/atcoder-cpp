@@ -1,5 +1,6 @@
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <vector>
 
 using namespace std;
 using namespace atcoder;
@@ -24,6 +25,7 @@ using pll = pair<ll, ll>;
 // ---- constants ----
 constexpr int INF = numeric_limits<int>::max() / 4;
 constexpr ll LINF = numeric_limits<ll>::max() / 4;
+const int MOD = 1000000007;
 
 // ---- macros ----
 #define rep(i, x, limit) for (ll i = (ll)(x); i < (ll)(limit); i++)
@@ -40,10 +42,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +83,16 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int n;
+  cin >> n;
+
+  vector<int> fibo(n, 0);
+  fibo[0] = 1;
+  fibo[1] = 1;
+  // フィボナッチ数列の計算
+  REP(i, 2, n) { fibo[i] = (fibo[i - 1] + fibo[i - 2]) % MOD; }
+
+  cout << fibo[n - 1] << el;
 }
 
 // ---- main ----

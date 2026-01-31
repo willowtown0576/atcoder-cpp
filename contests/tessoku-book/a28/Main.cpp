@@ -40,10 +40,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +81,30 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  ll n;
+  cin >> n;
+
+  ll ans = 0;
+
+  rep(i, 0, n) {
+    char t;
+    ll a;
+
+    cin >> t >> a;
+
+    if (t == '+')
+      ans += a;
+    if (t == '-')
+      ans -= a;
+    if (t == '*')
+      ans *= a;
+
+    if (ans < 0)
+      ans += 10000;
+
+    ans %= 10000;
+    cout << ans << el;
+  }
 }
 
 // ---- main ----

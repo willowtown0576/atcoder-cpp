@@ -1,5 +1,6 @@
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <vector>
 
 using namespace std;
 using namespace atcoder;
@@ -40,10 +41,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -78,10 +79,41 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 }
 
 // ---- snippets paste zone ----
+/**
+ * エラトステネスの篩
+ * O(n lot log n)
+ */
+vector<int> sieve(int n) {
+  vector<bool> v(n + 1, true);
+  v[0] = v[1] = false;
+
+  for (int i = 2; i * i <= n; i++) {
+    if (!v[i])
+      continue;
+
+    for (int j = i * i; j <= n; j += i) {
+      v[j] = false;
+    }
+  }
+
+  vector<int> primes;
+  for (int i = 2; i <= n; i++) {
+    if (v[i])
+      primes.push_back(i);
+  }
+
+  return primes;
+}
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int n;
+  cin >> n;
+
+  using vi = vector<int>;
+
+  vi primes = sieve(n);
+  rep(i, 0, primes.size()) { cout << primes[i] << el; }
 }
 
 // ---- main ----

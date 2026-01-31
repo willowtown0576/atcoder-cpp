@@ -40,10 +40,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -77,11 +77,32 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
   cout << el;
 }
 
+bool is_prime(int n) {
+  for (int i = 2; i * i <= n; i++) {
+    if (n % i == 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
 // ---- snippets paste zone ----
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int q;
+  cin >> q;
+
+  rep(i, 0, q) {
+    int x;
+    cin >> x;
+
+    if (is_prime(x)) {
+      Yes();
+    } else {
+      No();
+    }
+  }
 }
 
 // ---- main ----
