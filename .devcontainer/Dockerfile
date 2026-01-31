@@ -121,19 +121,15 @@ struct Init {
 // ---- aliases ----
 using ll = long long;
 using ull = unsigned long long;
-using i128 = __int128_t;
-using u128 = __uint128_t;
 using vi = vector<int>;
-using vvi = vector<vi>;
 using vll = vector<ll>;
-using vvll = vector<vll>;
 using vb = vector<bool>;
-using vvb = vector<vb>;
 using vc = vector<char>;
-using vvc = vector<vc>;
 using vs = vector<string>;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
+template <class T> using maxpq = priority_queue<T>;
+template <class T> using minpq = priority_queue<T, vector<T>, greater<T>>;
 
 // ---- constants ----
 constexpr int INF = numeric_limits<int>::max() / 4;
@@ -155,13 +151,6 @@ const int dx4[4] = { 1, 0, -1, 0 };
 const int dy4[4] = { 0, 1, 0, -1 };
 const int dx8[8] = { 1, 1, 0, -1, -1, -1, 0, 1 };
 const int dy8[8] = { 0, 1, 1, 1, 0, -1, -1, -1 };
-
-// ---- debug ----
-#ifdef LOCAL
-#define debug(x) cerr << #x << " = " << (x) << el
-#else
-#define debug(x) ((void)0)
-#endif
 
 // ---- helpers ----
 inline void Yes() { cout << "Yes" << el; }
