@@ -16,6 +16,9 @@ contests/**/tests/
 contests/**/submit/
 contests/**/.acc*
 
+# obsidian
+memo/.obsidian
+
 # OS / editor
 .DS_Store
 Thumbs.db
