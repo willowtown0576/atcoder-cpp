@@ -1,5 +1,6 @@
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <queue>
 
 using namespace std;
 using namespace atcoder;
@@ -40,10 +41,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +82,31 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int n, x;
+  cin >> n >> x;
+  string s;
+  cin >> s;
+
+  queue<int> q;
+  q.push(x - 1);
+  s[x - 1] = '@';
+
+  while (!q.empty()) {
+    int pos = q.front();
+    q.pop();
+
+    if (s[pos - 1] == '.') {
+      s[pos - 1] = '@';
+      q.push(pos - 1);
+    }
+    if (s[pos + 1] == '.') {
+      s[pos + 1] = '@';
+      q.push(pos + 1);
+    }
+  }
+
+  rep(i, 0, n) { cout << s[i]; }
+  cout << el;
 }
 
 // ---- main ----

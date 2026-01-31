@@ -1,5 +1,6 @@
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <set>
 
 using namespace std;
 using namespace atcoder;
@@ -40,10 +41,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +82,28 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int q;
+  cin >> q;
+
+  set<int> s;
+
+  rep(i, 0, q) {
+    int query, x;
+    cin >> query >> x;
+
+    if (query == 1) {
+      s.insert(x);
+    } else if (query == 2) {
+      s.erase(x);
+    } else if (query == 3) {
+      auto itr = s.lower_bound(x);
+      if (itr == s.end()) {
+        cout << "-1" << el;
+      } else {
+        cout << *itr << el;
+      }
+    }
+  }
 }
 
 // ---- main ----

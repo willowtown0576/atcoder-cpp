@@ -20,6 +20,8 @@ using i128 = __int128_t;
 using u128 = __uint128_t;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
+template <class T> using maxpq = priority_queue<T>;
+template <class T> using minpq = priority_queue<T, vector<T>, greater<T>>;
 
 // ---- constants ----
 constexpr int INF = numeric_limits<int>::max() / 4;
@@ -40,10 +42,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +83,25 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int q;
+  cin >> q;
+
+  minpq<int> pq;
+
+  rep(i, 0, q) {
+    int query;
+    cin >> query;
+
+    if (query == 1) {
+      int price;
+      cin >> price;
+      pq.push(price);
+    } else if (query == 2) {
+      cout << pq.top() << el;
+    } else if (query == 3) {
+      pq.pop();
+    }
+  }
 }
 
 // ---- main ----

@@ -1,5 +1,6 @@
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <queue>
 
 using namespace std;
 using namespace atcoder;
@@ -40,10 +41,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +82,24 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int q;
+  cin >> q;
+  queue<string> que;
+
+  rep(i, 0, q) {
+    int query;
+    cin >> query;
+
+    if (query == 1) {
+      string s;
+      cin >> s;
+      que.push(s);
+    } else if (query == 2) {
+      cout << que.front() << el;
+    } else if (query == 3) {
+      que.pop();
+    }
+  }
 }
 
 // ---- main ----

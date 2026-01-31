@@ -1,5 +1,7 @@
+#include <algorithm>
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <set>
 
 using namespace std;
 using namespace atcoder;
@@ -40,10 +42,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +83,44 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int q;
+  cin >> q;
+
+  set<ll> s1, s2;
+  rep(i, 0, q) {
+    int query, x;
+    cin >> query >> x;
+
+    if (query == 1) {
+      s1.insert(x);
+      s2.insert(-x);
+    } else if (query == 2) {
+      ll v1, v2;
+      // x以上の最小値
+      auto itr1 = s1.lower_bound(x);
+      if (itr1 == s1.end()) {
+        v1 = 100000000000000LL;
+      } else {
+        v1 = *itr1;
+      }
+
+      // x以下の最大値
+      auto itr2 = s2.lower_bound(-x);
+      if (itr2 == s2.end()) {
+        v2 = -100000000000000LL;
+      } else {
+        v2 = -(*itr2);
+      }
+
+      ll ans = min(v1 - x, x - v2);
+
+      if (ans >= 100000000000LL) {
+        cout << "-1" << el;
+      } else {
+        cout << ans << el;
+      }
+    }
+  }
 }
 
 // ---- main ----

@@ -1,5 +1,7 @@
 #include <atcoder/all>
 #include <bits/stdc++.h>
+#include <map>
+#include <string>
 
 using namespace std;
 using namespace atcoder;
@@ -40,10 +42,10 @@ constexpr ll LINF = numeric_limits<ll>::max() / 4;
 #endif
 
 // ---- helpers ----
-inline void Yes(){ cout << "Yes\n"; }
-inline void No(){ cout << "No\n"; }
-inline void YES(){ cout << "YES\n"; }
-inline void NO(){ cout << "NO\n"; }
+inline void Yes() { cout << "Yes\n"; }
+inline void No() { cout << "No\n"; }
+inline void YES() { cout << "YES\n"; }
+inline void NO() { cout << "NO\n"; }
 
 template <class T> inline bool chmax(T &a, const T &b) {
   if (a < b) {
@@ -81,7 +83,26 @@ template <class T> void print_vec(const vector<T> &v, char sep = ' ') {
 
 // ---- solve ----
 static void solve() {
-  // TODO: write your solution here
+  int q;
+  cin >> q;
+
+  map<string, int> m;
+
+  rep(i, 0, q) {
+    int query;
+    cin >> query;
+
+    if (query == 1) {
+      string name;
+      int score;
+      cin >> name >> score;
+      m[name] = score;
+    } else if (query == 2) {
+      string name;
+      cin >> name;
+      cout << m[name] << el;
+    }
+  }
 }
 
 // ---- main ----
